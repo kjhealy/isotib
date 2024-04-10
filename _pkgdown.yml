@@ -16,6 +16,28 @@ reference:
   - paint_x
   - paint_y
   - paint_xy
+  - coords_heightmap
+  - draw_z
+  - get_labels
+  - sdf_box
+  - sdf_cyl
+  - sdf_interpolate
+  - sdf_intersect
+  - sdf_intersect_smooth
+  - sdf_onion
+  - sdf_plane
+  - sdf_render
+  - sdf_repeat_infinite
+  - sdf_rotatez
+  - sdf_round
+  - sdf_scale
+  - sdf_sphere
+  - sdf_subtract
+  - sdf_subtract_smooth
+  - sdf_torus
+  - sdf_translate
+  - sdf_union
+  - sdf_union_smooth
 
 - title: isocube functions
   desc: Doin the actual work
