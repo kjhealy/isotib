@@ -11,4 +11,5 @@ LazyData: true
 RoxygenNote: 7.3.1
 URL: https://github.com/kjhealy/isotib
 BugReports: https://github.com/kjhealy/isotib/issues
-Imports: grid, isocubes
+Imports:
+    grid
