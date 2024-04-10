@@ -2,7 +2,7 @@ pandoc: 3.1.11
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles: {}
-last_built: 2024-04-10T19:57Z
+last_built: 2024-04-10T20:18Z
 urls:
   reference: https://kjhealy.github.io/isotib/reference
   article: https://kjhealy.github.io/isotib/articles
