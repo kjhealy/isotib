@@ -1,0 +1,24 @@
+destination: docs
+url: https://kjhealy.github.io/isotib
+template:
+  bootstrap: 5
+reference:
+- title: Our functions
+  desc: The ones what we wrote
+  contents:
+  - delete_x
+  - delete_y
+  - draw_column
+  - draw_row
+  - make_brick
+  - make_textvec
+  - make_wall
+  - paint_x
+  - paint_y
+  - paint_xy
+
+- title: isocube functions
+  desc: Doin the actual work
+  contents:
+  - isocubesGrob
+
