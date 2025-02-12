@@ -19,3 +19,7 @@ x
 \description{
 Paint x vec
 }
+\examples{
+\dontrun{
+}
+}

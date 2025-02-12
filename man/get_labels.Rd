@@ -17,3 +17,7 @@ x
 \description{
 Get vector of labels
 }
+\examples{
+\dontrun{
+}
+}

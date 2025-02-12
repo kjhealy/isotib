@@ -23,3 +23,7 @@ A vector of labels
 \description{
 Make a vector of text labels
 }
+\examples{
+\dontrun{
+}
+}

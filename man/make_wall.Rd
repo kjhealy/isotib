@@ -2,7 +2,7 @@
 % Please edit documentation in R/make_fns.R
 \name{make_wall}
 \alias{make_wall}
-\title{Make the grid points for an inso 'wall'}
+\title{Make the grid points for an iso 'wall'}
 \usage{
 make_wall(width, height, z = 0, fill = "gray90")
 }
@@ -19,5 +19,9 @@ make_wall(width, height, z = 0, fill = "gray90")
 A dataframe of coordinates and color fill
 }
 \description{
-Make the grid points for an inso 'wall'
+Make the grid points for an iso 'wall'
+}
+\examples{
+\dontrun{
+}
 }

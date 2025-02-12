@@ -41,3 +41,7 @@ x
 \description{
 Draw a column
 }
+\examples{
+\dontrun{
+}
+}

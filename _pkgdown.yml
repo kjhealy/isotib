@@ -9,9 +9,11 @@ reference:
   - delete_y
   - draw_column
   - draw_row
+  - drawcubes
   - make_brick
   - make_textvec
   - make_wall
+  - my_plot_crop
   - paint_x
   - paint_y
   - paint_xy

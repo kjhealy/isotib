@@ -19,3 +19,7 @@ x
 \description{
 Paint y
 }
+\examples{
+\dontrun{
+}
+}

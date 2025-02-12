@@ -7,7 +7,8 @@
 #' @return x
 #' @export
 #'
-#' @examples
+#' @examples \dontrun{
+#' }
 paint_x <- function(object, range, col) {
   ind <- object$x %in% range
   object$fill[ind] <- col
@@ -23,7 +24,8 @@ paint_x <- function(object, range, col) {
 #' @return x
 #' @export
 #'
-#' @examples
+#' @examples \dontrun{
+#' }
 paint_y <- function(object, range, col) {
   ind <- object$y %in% range
   object$fill[ind] <- col
@@ -40,7 +42,8 @@ paint_y <- function(object, range, col) {
 #' @return x
 #' @export
 #'
-#' @examples
+#' @examples \dontrun{
+#' }
 paint_xy <- function(object, xrange, yrange, col) {
   indx <- object$x %in% xrange
   indy <- object$y %in% yrange
@@ -56,7 +59,8 @@ paint_xy <- function(object, xrange, yrange, col) {
 #' @return x
 #' @export
 #'
-#' @examples
+#' @examples \dontrun{
+#' }
 delete_x <- function(object, remove) {
   object[!object$x %in% remove,]
 }
@@ -69,7 +73,8 @@ delete_x <- function(object, remove) {
 #' @return x
 #' @export
 #'
-#' @examples
+#' @examples \dontrun{
+#' }
 delete_y <- function(object, remove) {
   object[!object$y %in% remove,]
 }
@@ -90,28 +95,31 @@ delete_y <- function(object, remove) {
 #' @return x
 #' @export
 #'
-#' @examples
+#' @examples \dontrun{
+#' }
 draw_column <- function(xpos, ncubes = 10,
                         fill = "gray80", darkenby = 0.05, z = 0,
                         delete_x = NULL,
                         delete_y = NULL,
                         light = "left-top",
                         ysize = 1/ncubes) {
+
   coords <- expand.grid(x=xpos, y=1:ncubes, z=z)
   coords$fill <- fill
 
   if(is.null(delete_x) & is.null(delete_y)) {
     coords |>
-      isocubesGrob(darkenby = darkenby, light = light) |>
+      isocubes::isocubesGrob(darkenby = darkenby, light = light) |>
       grid::grid.draw()
   } else {
     coords |>
       delete_x(delete_x) |>
       delete_y(delete_y) |>
-      isocubesGrob(darkenby = darkenby, light = light, ysize = ysize) |>
+      isocubes::isocubesGrob(darkenby = darkenby, light = light, ysize = ysize) |>
       grid::grid.draw()
   }
 }
+
 
 #' Draw a row
 #'
@@ -127,7 +135,8 @@ draw_column <- function(xpos, ncubes = 10,
 #' @return x
 #' @export
 #'
-#' @examples
+#' @examples \dontrun{
+#' }
 draw_row <- function(ypos, ncubes = 10, fill = "gray80",
                      darkenby = 0.05, z = 0,
                      delete = NULL,
@@ -135,15 +144,16 @@ draw_row <- function(ypos, ncubes = 10, fill = "gray80",
                      ysize = 1/ncubes) {
   coords <- expand.grid(x=1:ncubes, y=ypos, z=z)
   coords$fill <- fill
-  if(is.null(delete)) {
-    coords |>
-      isocubesGrob(darkenby = darkenby, light = light) |>
+  if(is.null(delete_x) & is.null(delete_y)) {
+    isocubesGrobOrig(coords = coords, darkenby = darkenby, light = light, fill = fill) |>
       grid::grid.draw()
   } else {
-    coords |>
-      delete_y(delete) |>
-      isocubesGrob(darkenby = darkenby, light = light,
-                             ysize = ysize) |>
+    new_coords <- coords |>
+      delete_x(delete_x) |>
+      delete_y(delete_y)
+
+    isocubesGrobOrig(coords = new_coords,
+                 darkenby = darkenby, light = light, ysize = ysize, fill = fill) |>
       grid::grid.draw()
   }
 }
@@ -159,12 +169,12 @@ draw_row <- function(ypos, ncubes = 10, fill = "gray80",
 #' @return x
 #' @export
 #'
-#' @examples
+#' @examples \dontrun{
+#' }
 draw_z <- function(zpos, ncubes = 10, fill = "gray80", darkenby = 0.05) {
   coords <- expand.grid(x=1, y=1:ncubes, z=zpos)
   coords$fill <- fill
-  coords |>
-    isocubesGrob(darkenby = darkenby) |>
+  isocubesGrobOrig(coords = coords, darkenby = darkenby, fill = fill) |>
     grid::grid.draw()
 }
 
@@ -178,7 +188,8 @@ draw_z <- function(zpos, ncubes = 10, fill = "gray80", darkenby = 0.05) {
 #' @return x
 #' @export
 #'
-#' @examples
+#' @examples \dontrun{
+#' }
 get_labels <- function(labels, coords) {
   if (!is.null(labels))
     labels
@@ -188,4 +199,16 @@ get_labels <- function(labels, coords) {
     coords$labels
   else
     "No label"
+}
+
+
+get_fill <- function(fill, coords) {
+  if (!is.null(fill))
+    fill
+  else if (hasName(coords, 'col'))
+    coords$col
+  else if (hasName(coords, 'fill'))
+    coords$fill
+  else
+    'grey90'
 }
